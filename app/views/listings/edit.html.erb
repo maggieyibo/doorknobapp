@@ -1,0 +1,11 @@
+<%= form_for @listing do |f| %>
+
+  Type: <%= f.text_field :type %><br>
+  City: <%= f.text_field :city %><br>
+  Bedrooms: <%= f.number_field :num_bed %><br>
+  Bathrooms: <%= f.number_field :num_bath %><br>
+  Price: $ <%= f.number_field :price %><br>
+  Decription: <%= f.text_area :description %><br>
+  <%= f.submit 'Save Changes' %>
+  
+<% end %>

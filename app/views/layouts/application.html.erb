@@ -5,16 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
 <body>
-<% if current_user %>
-<h1> Hello <%= current_user.username %></h1>
-<% else %>
-<%= link_to 'login', login_path %>
-<% end %>
+    <header class="navbar navbar-inverse" role="navigation">
+      <div class="navbar">
+        <%= link_to "DoorKnob", '/listings', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   '/login' %></li>
+            <li><%= link_to "Login",   login_path %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+    		<% if current_user %>
+		<h1> Hello <%= current_user.username %></h1>
+		<% else %>
+		<%= link_to 'login', login_path %>
+		<% end %>
+    <%= yield %>
 
-<%= session[:user_id] %>
-<%= yield %>
+		
+		<% session[:user_id] %>
+		
 
 </body>
+
 </html>

@@ -1,0 +1,11 @@
+<%= form_for @listing do |f| %>
+  
+  Type: <%= f.text_field :type %><br>
+  City: <%= f.text_field :city %><br>
+  Number of Bedrooms: <%= f.number_field :num_bed %><br>
+  Number of Bathrooms: <%= f.number_field :num_bath %><br>
+  Price: <%= f.number_field :price %><br>
+  Description: <%= f.text_area :description %><br>
+  <%= f.submit 'Create Listing' %>
+  
+<% end %>
