@@ -1,12 +1,12 @@
 class ListingsController < ApplicationController
-	
+		before_action :authorize
 
 	def index
 		@listings = Listing.all
 	end
 
   def show
-    @listings = Listing.find(params[:id])
+    @listing = Listing.find(params[:id])
   end
 
   def new
@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listing = Listing.new(listing_params)
+    @listing = current_user.listings.new(listing_params)
 
     if @listing.save
       redirect_to listings_path
@@ -48,6 +48,6 @@ class ListingsController < ApplicationController
 private
 
   def listing_params
-    params.require(:listing).permit(:type, :city, :num_bed, :num_bath, :price, :desccription)
+    params.require(:listing).permit(:type, :city, :num_bed, :num_bath, :price, :description)
   end
 end

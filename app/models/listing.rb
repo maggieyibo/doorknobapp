@@ -7,4 +7,5 @@ class Listing
   field :price, type: String
   field :integer, type: String
   field :description, type: String
+  belongs_to :user
 end

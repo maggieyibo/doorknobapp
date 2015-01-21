@@ -4,6 +4,7 @@ class User
   field :username, type: String
   field :email, type: String
   field :password_digest, type: String
+  has_many :listings
 
   has_secure_password
 

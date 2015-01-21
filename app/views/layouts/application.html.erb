@@ -11,7 +11,7 @@
         <%= link_to "DoorKnob", '/listings', id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   '/login' %></li>
+            <li><%= link_to "Sign Up",   '/users/new' %></li>
             <li><%= link_to "Login",   login_path %></li>
             <li><%= link_to "Log Out", logout_path %></li>
           </ul>
@@ -21,6 +21,7 @@
     <div class="container">
     		<% if current_user %>
 		<h1> Hello <%= current_user.username %></h1>
+		<%= link_to 'See All Listings', listings_path %>
 		<% else %>
 		<%= link_to 'login', login_path %>
 		<% end %>

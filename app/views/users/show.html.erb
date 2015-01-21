@@ -1,4 +1,7 @@
 <%= current_user.email %>
 <%= current_user.username %>
 
+<%= current_user.listings.each do |d| %>
+<%= d.city %>
+<% end %>
 <%= link_to "Logout", logout_path %>

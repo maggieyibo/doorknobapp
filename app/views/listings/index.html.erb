@@ -1,4 +1,4 @@
-    <h4><%= link_to 'Add A New Listing', new_listing_path %></h4>
+    <h6><%= link_to 'Add A New Listing', new_listing_path %></h6>
 
 <table>
 
@@ -12,15 +12,16 @@
   </thead>
 
   <tbody>
-    <% @listings.each do |l| %>
+    <% @listings.each do |f| %>
       <tr>
-        <td><%= l.type %></td>
-        <td><%= l.city %> 
-        <td><%= l.num_bed %></td>
-        <td><%= l.num_bath %></td>
-        <td>$<%=l.price%></td>
-        <td><%= l.description %></td>
-        <td><%= link_to 'Edit', edit_listing_path(l) %> | <%= button_to 'Remove Listing', l, method: :delete %></td>
+        <td><%= f.type %></td>
+        <td><%= f.city %> 
+        <td><%= f.num_bed %></td>
+        <td><%= f.num_bath %></td>
+        <td>$<%= f.price %></td>
+        <td><%= f.description %></td>
+        <td><%#= l.user_id %> </td>
+        <td><%= link_to 'Edit', edit_listing_path(f) %><%#= button_to 'Remove Listing', l, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
