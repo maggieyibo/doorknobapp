@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-		before_action :authorize
+		before_action :authorize, except: [:show, :index]
 
 	def index
 		@listings = Listing.all
