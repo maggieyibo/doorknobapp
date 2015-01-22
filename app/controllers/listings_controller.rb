@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
 
 	def index
 		@listings = Listing.all
+
 	end
 
   def show
@@ -12,13 +13,15 @@ class ListingsController < ApplicationController
   def new
     @listing = Listing.new
   end
-
+9
   def create
     @listing = current_user.listings.new(listing_params)
 
     if @listing.save
+    	flash[:success] = "Listing created!"
       redirect_to listings_path
     else
+    	flash[:danger] = "All Fields are Required"
       render :new
     end
   end
@@ -48,6 +51,6 @@ class ListingsController < ApplicationController
 private
 
   def listing_params
-    params.require(:listing).permit(:type, :city, :num_bed, :num_bath, :price, :description)
+    params.require(:listing).permit(:type, :city, :num_bed, :num_bath, :price, :description, :latitude, :longitude)
   end
 end

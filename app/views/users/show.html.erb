@@ -1,7 +1,8 @@
-<%= current_user.email %>
-<%= current_user.username %>
+You are logged in as <%= current_user.email %><br>
+<%#= current_user.username %><br>
 
-<%= current_user.listings.each do |d| %>
-<%= d.city %>
-<% end %>
+<%#= current_user.listings.each do |d| %>
+<%#= d.type %><br>
+<%#= d.city %><br>
+<%# end %>
 <%= link_to "Logout", logout_path %>

@@ -33,6 +33,11 @@ gem 'bootstrap-sass', '~> 3.3.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'fog' #required for s3
+gem 'mini_magick' #post upload processing
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

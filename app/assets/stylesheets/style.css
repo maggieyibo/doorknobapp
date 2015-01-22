@@ -1,7 +1,4 @@
-  @import "bootstrap-sprockets";
-  @import "bootstrap";
-
-  #map-container {
+/*#map-container {
    height: 300px;
    border-radius: 8px 8px;
    border-color: #fff;
@@ -13,4 +10,4 @@
  #map-canvas {
    height: 284px;
    width: 100%;
- }
+ }*/

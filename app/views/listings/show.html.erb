@@ -1,3 +1,5 @@
+
+
 <p> <%= @listing.type %> <br>
 		 <%= @listing.city %><br>
 		 Bedrooms: <%= @listing.num_bed %><br>
@@ -9,3 +11,4 @@
     <%= link_to "Edit this listing!", edit_listing_path %>
     <%= link_to "Delete this listing!", :listing, method: :delete, data: { confirm: "Are you sure you want to delete this listing?"} %>
     <%= link_to "Back to the list!", listings_path %>
+

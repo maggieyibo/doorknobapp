@@ -5,9 +5,13 @@ class SessionsController < ApplicationController
 	def create
 		user = User.find_by(username: params[:user][:username])
 		if user && user.authenticate(params[:user][:password])
+
+			flash[:success] = "Login Successful"
 			session[:user_id] = user.id
 			redirect_to user_path(user.id)
 		else
+			flash.now[:danger] = @user.errors.full_message.to_sentence
+			flash.now[:error] = "Unable to Login, Please try again!"
 			render :new
 		end
 	end
