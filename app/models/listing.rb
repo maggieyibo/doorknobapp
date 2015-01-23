@@ -8,6 +8,7 @@ class Listing
   field :description, type: String
   field :latitude, type: Float
   field :longitude, type: Float
+  mount_uploader :photo, ListingPhotoUploader
   belongs_to :user
 
  	validates :type, presence: true

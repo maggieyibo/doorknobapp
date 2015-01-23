@@ -1,14 +1,14 @@
 
 
-<p> <%= @listing.type %> <br>
-		 <%= @listing.city %><br>
+<p>  Type:<%= @listing.type %> <br>
+		 City: <%= @listing.city %><br>
 		 Bedrooms: <%= @listing.num_bed %><br>
 		 Bathrooms: <%= @listing.num_bath %><br>
 		 Price: $ <%= @listing.price %><br>
 		 Description: <%= @listing.description %><br>
-</p>
+		 Photos: <%= @listing.photo %><br>
 
-    <%= link_to "Edit this listing!", edit_listing_path %>
-    <%= link_to "Delete this listing!", :listing, method: :delete, data: { confirm: "Are you sure you want to delete this listing?"} %>
-    <%= link_to "Back to the list!", listings_path %>
+    <%= link_to "Edit this listing!", edit_listing_path,  :class => "btn btn-default" %>
+    <%= link_to "Delete this listing!", :listing, method: :delete, data: { confirm: "Are you sure you want to delete this listing?"},  :class => "btn btn-default" %>
+    <%= link_to "Back to the list!", listings_path, :class => "btn btn-default" %>
 

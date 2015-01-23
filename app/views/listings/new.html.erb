@@ -6,6 +6,8 @@
   Number of Bathrooms: <%= f.number_field :num_bath %><br>
   Price: <%= f.number_field :price %><br>
   Description: <%= f.text_area :description %><br>
-  <%= f.submit 'Create Listing' %>
+  <div class="glyphicon glyphicon-camera"><%= f.file_field :photo %></div></br><br>
+  <br>
+  <%= f.submit 'Create Listing', :class => "btn btn-default" %>
   
 <% end %>

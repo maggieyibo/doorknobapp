@@ -6,6 +6,8 @@
   Bathrooms: <%= f.number_field :num_bath %><br>
   Price: $ <%= f.number_field :price %><br>
   Description: <%= f.text_area :description %><br>
+  Listing Photos: <%= f.file_field :photo %></br><br>
+  <br>
   <%= f.submit 'Save Changes' %>
   
 <% end %>
