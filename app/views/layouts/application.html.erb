@@ -28,6 +28,13 @@
           </div>
     <% end %>
 		<div> Hello <%= current_user.username %>, You are logged in as <%= current_user.email %> </div>
+    <h3>Where do you want to live? </h3>
+    <%= form_tag listings_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Take Me There" %>
+      </p>
+    <% end %>
 		<div class ="pager"><%= link_to 'See All Listings', listings_path, :class => "btn btn-default" %></div>
     <div class="pager"><%= link_to 'Add A New Listing', new_listing_path, :class => "btn btn-default" %></div>
 		<% else %>

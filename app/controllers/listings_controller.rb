@@ -2,8 +2,11 @@ class ListingsController < ApplicationController
 		before_action :authorize, except: [:show, :index]
 
 	def index
-		@listings = Listing.all
-
+    if params[:search]
+     @listings = Listing.where(:city => params[:search].downcase)
+    else
+		 @listings = Listing.all
+    end
 	end
 
   def show
@@ -13,10 +16,10 @@ class ListingsController < ApplicationController
   def new
     @listing = Listing.new
   end
-9
+
   def create
     @listing = current_user.listings.new(listing_params)
-
+    @listing[:city].downcase!
     if @listing.save
     	flash[:success] = "Listing created!"
       redirect_to listings_path
@@ -48,9 +51,10 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
-private
+  private
 
   def listing_params
     params.require(:listing).permit(:type, :city, :num_bed, :num_bath, :price, :description, :photo, :latitude, :longitude)
   end
+
 end
