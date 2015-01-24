@@ -9,7 +9,9 @@ class Listing
   field :latitude, type: Float
   field :longitude, type: Float
   mount_uploader :photo, ListingPhotoUploader
+  embeds_many :photos
   belongs_to :user
+  
 
  	validates :type, presence: true
   validates :city, presence: true

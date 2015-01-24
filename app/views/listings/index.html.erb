@@ -73,7 +73,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <td>$<%= f.price %></td>
         <td><%= f.description %></td>
         <td><%= image_tag f.photo.url(:small), height: '150', width: '130' %></td>
-        <td><%= link_to 'Edit', edit_listing_path(f), :class => "btn btn-default" %></td>
+        <td><%= link_to 'See More', listing_path(f), :class => "btn btn-default" %></td>
       </tr>
     <% end %>
   </table>

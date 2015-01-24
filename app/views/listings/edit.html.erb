@@ -1,4 +1,4 @@
-<%= form_for @listing do |f| %>
+  <%= form_for @listing do |f| %>
 
   Type: <%= f.text_field :type %><br>
   City: <%= f.text_field :city %><br>
@@ -6,8 +6,8 @@
   Bathrooms: <%= f.number_field :num_bath %><br>
   Price: $ <%= f.number_field :price %><br>
   Description: <%= f.text_area :description %><br>
-  Listing Photos: <%= f.file_field :photo %></br><br>
+  Listing Photos: <%= f.file_field :photo, :multiple => true %></br><br>
   <br>
-  <%= f.submit 'Save Changes' %>
+  <%= f.submit 'Update' %>
   
 <% end %>

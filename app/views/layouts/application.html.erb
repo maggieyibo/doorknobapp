@@ -3,6 +3,7 @@
 <head>
   <title>Doorknobapp</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAtMTyEHjwug0bqEL-IEuEKgW3paGNZ0Jk" %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -26,9 +27,9 @@
           <% key %><%= value %>
           </div>
     <% end %>
-		<div> Hello <%= current_user.username %> You are logged in as <%= current_user.email %> </div><br>
-		<%= link_to 'See All Listings', listings_path, :class => "btn btn-default" %>
-    <h6><%= link_to 'Add A New Listing', new_listing_path, :class => "btn btn-default" %></h6>
+		<div> Hello <%= current_user.username %>, You are logged in as <%= current_user.email %> </div>
+		<div class ="pager"><%= link_to 'See All Listings', listings_path, :class => "btn btn-default" %></div>
+    <div class="pager"><%= link_to 'Add A New Listing', new_listing_path, :class => "btn btn-default" %></div>
 		<% else %>
 		<%#= link_to 'login', login_path %>
 		<% end %>

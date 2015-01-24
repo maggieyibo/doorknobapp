@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
 
-  resources :listings
+  resources :listings do
+  	resources :photos
+  end
+
   resources :users 
 
 
