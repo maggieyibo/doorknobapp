@@ -5,6 +5,18 @@
     font-size: 30px;
   }
 
+  .navbar {
+    font-family: 'Lobster', cursive;
+    font-size: 55px;
+    padding: 20px, 0px, 20px, 30px;
+  }
+
+  .links {
+    font-family: 'Lobster', cursive;
+    font-size: 25px;
+    padding: 20px, 0px, 20px, 30px;
+  }
+
   #map-container {
    height: 500px;
    width: 100%;
@@ -21,7 +33,12 @@
  }
 body {
   background-color: #ecf0f1;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  font-size: 20px;
+}
+input {
+    text-align: center;
 }
 
 .navbar-fixed-top {
