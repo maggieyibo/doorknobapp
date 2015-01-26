@@ -1,18 +1,26 @@
-
+<div class="form-group">
 <%= form_for @listing do |f| %>
 
-	Type: <%= f.select :type, options_for_select(["House", "Condo", "Townhouse", "Apartment", "Roomshare"])%><br>
-	Address: <%= f.text_field :address %><br>
-  City: <%= f.text_field :city %><br>
-  State: <%= f.text_field :state %><br>
-  Zipcode: <%= f.number_field :zip %><br>
-  Number of Bedrooms: <%= f.select :num_bed, options_for_select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])%><br>
-  Number of Bathrooms: <%= f.select :num_bath, options_for_select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])%><br>
-  Price $: <%= f.number_field :price %><br>
-  Description: <%= f.text_area :description %><br>
-  6 Photos Minimum Please <%= f.file_field :photo %></br>
+	<%= f.select :type, options_for_select(["House", "Condo", "Townhouse", "Apartment", "Roomshare"])%><br>
+	<br>
+	<%= f.text_field :address, :placeholder=>"Address" %><br>
   <br>
+  <%= f.text_field :city, :placeholder=>"City" %><br>
+ 	<br>
+  <%= f.text_field :state, :placeholder=>"State" %><br>
+  <br>
+  <%= f.number_field :zip, :placeholder=>"Zipcode" %><br>
+  Bedrooms <br>
+ 	<%= f.select :num_bed, options_for_select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])%><br>
+  Bathrooms <br>
+  <%= f.select :num_bath, options_for_select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])%><br>
+  <%= f.number_field :price, :placeholder=>"How Much is Rent?" %><br>
+  Description: <br>
+  <%= f.text_area :description, :placeholder=>"Tell us a bit about the place." %><br>
+  6 Photos Minimum 
+  <br><%= f.file_field :photo %><br>
   
   <%= f.submit 'Create Listing', :class => "btn btn-info" %>
   
 <% end %>
+</form>

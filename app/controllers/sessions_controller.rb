@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
 			session[:user_id] = user.id
 			redirect_to user_path(user.id)
 		else
-			flash.now[:danger] = @user.errors.full_message.to_sentence
-			flash.now[:error] = "Unable to Login, Please try again!"
+			flash.now[:danger] = "Unable to Login, Please try again!"
 			render :new
 		end
 	end

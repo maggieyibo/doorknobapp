@@ -1,9 +1,10 @@
-
+<div class="form-group">
 <h1>Create New User</h1> 
 <%= form_for @user do |f| %>
-username <%= f.text_field :username %>
-email <%= f.text_field :email %>
-password <%= f.password_field :password %>
-confirm <%= f.password_field :password_confirmation %>
+USERNAME<br> <%= f.text_field :username %><br>
+EMAIL <br><%= f.text_field :email %><br>
+PASSWORD <br> <%= f.password_field :password %><br>
+CONFIRM YOUR PASSWORD <br><%= f.password_field :password_confirmation %><br><br>
 <%= f.submit "Join", :class => "btn btn-info" %>
 <% end %>
+</div>

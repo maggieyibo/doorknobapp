@@ -130,10 +130,10 @@ body {
   background-image: url(http://alicegao.com/LingeredUpon/nashville8.jpg); 
 }
 .fade-carousel .slides .slide-2 {
-  background-image: url(https://ununsplash.imgix.net/photo-1416339684178-3a239570f315?q=75&fm=jpg&s=c39d9a3bf66d6566b9608a9f1f3765af);
+  background-image: url(http://cocolapinedesign.com/wp-content/uploads/2014/05/SFD9B3F892B285748499D8EED2B8551362F.jpg);
 }
 .fade-carousel .slides .slide-3 {
-  background-image: url(http://cocolapinedesign.com/wp-content/uploads/2014/05/SFD9B3F892B285748499D8EED2B8551362F.jpg);
+  background-image: url(https://ununsplash.imgix.net/photo-1416339684178-3a239570f315?q=75&fm=jpg&s=c39d9a3bf66d6566b9608a9f1f3765af)
 }
 
 
@@ -145,4 +145,9 @@ body {
 }
 @media screen and (max-width: 640px){
     .hero h1 { font-size: 4em; }    
+}
+
+.form-group{
+  color: #34495e;
+  text-align: center;
 }
