@@ -15,7 +15,7 @@
 	  <%= image_tag p.photo.url, height: '250', width: '230' %>
 	  <%#= link_to "Delete this photo", :class => "btn btn-default" %>
 	<% end %>
-	<div>
+	<div class="form-group">
 	<% if current_user %>
 	<%= link_to "Add Photos", new_listing_photo_path(@listing), :class => "btn btn-info" %>
   <%= link_to "Edit Listing", edit_listing_path, :class => "btn btn-warning" %>
