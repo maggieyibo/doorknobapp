@@ -1,8 +1,9 @@
+
 <h1>Create New User</h1> 
 <%= form_for @user do |f| %>
 username <%= f.text_field :username %>
 email <%= f.text_field :email %>
 password <%= f.password_field :password %>
 confirm <%= f.password_field :password_confirmation %>
-<%= f.submit "Join", :class => "btn btn-default" %>
+<%= f.submit "Join", :class => "btn btn-info" %>
 <% end %>

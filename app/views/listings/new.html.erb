@@ -1,14 +1,18 @@
+
 <%= form_for @listing do |f| %>
 
+	Type: <%= f.select :type, options_for_select(["House", "Condo", "Townhouse", "Apartment", "Roomshare"])%><br>
+	Address: <%= f.text_field :address %><br>
   City: <%= f.text_field :city %><br>
-  Type: <%= f.select :type, options_for_select(["House", "Condo", "Townhouse", "Apartment", "Roomshare"])%><br>
+  State: <%= f.text_field :state %><br>
+  Zipcode: <%= f.number_field :zip %><br>
   Number of Bedrooms: <%= f.select :num_bed, options_for_select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])%><br>
   Number of Bathrooms: <%= f.select :num_bath, options_for_select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])%><br>
   Price $: <%= f.number_field :price %><br>
   Description: <%= f.text_area :description %><br>
-  6 Photos Minimum Please <%= f.file_field :photo %></br><br>
+  6 Photos Minimum Please <%= f.file_field :photo %></br>
   <br>
-
-  <%= f.submit 'Create Listing', :class => "btn btn-default" %>
+  
+  <%= f.submit 'Create Listing', :class => "btn btn-info" %>
   
 <% end %>

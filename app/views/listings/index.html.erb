@@ -1,53 +1,58 @@
-
+ <% if current_user %>
 <div id="map-container">
   <div id="map-canvas" >
   </div>
 </div>
-<script>
+<script type="text/javascript">
 function initialize() {
-  var myLatlng = makeLatLng(34.142593, -118.127701);
-
+  var myLatlng;
+  // The current zoom and location of where the map is centerd on
+  navigator.geolocation.getCurrentPosition(function(position) {
+      myLatlng =(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+      console.log(myLatlng);
+      // var myLatlng = makeLatLng(34.05, -118.2);
   var mapOptions = {
-    zoom: 12,
+    zoom: 11,
     center: myLatlng
   }
+
+  // Create a map with a canvas
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+
+  // The function to create a longitude and latitude in Google Maps
   function makeLatLng(latitude, longitude) {
-    return new google.maps.LatLng(latitude, longitude);
+    return new google.maps.LatLng(latitude, longitude)
   }
 
+  //The function to create a marker in Google Maps
   function makeMarker(latitude, longitude) {
-    new google.maps.Marker({
+    return new google.maps.Marker({
       position: makeLatLng(latitude, longitude),
-      map: map
+      map: map,
     });
   }
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map
-    });
- 
-     makeMarker(34,-119);
-     makeMarker(60,-20);
-     google.maps.event.addListener(map, 'click', function(event){
-      makeMarker(event.latLng.k, event.latLng.D);
-      createHouse(event.latLng.k, event.latLng.D);
+
+  // Add saved longitudes and latitudes to save on the map
+  <% @listings.each do |listing| %>
+
+  var <%= "marker" + listing.id %> = makeMarker(<%= listing.latitude %>, <%= listing.longitude %>);
+
+  var <%= "infoWindow" + listing.id %> = new google.maps.InfoWindow({
+      content: '<span><strong>Address:</strong> <%= listing.address %></span><br> <span><%= listing.city %>, <%= listing.state %> <%= listing.zip %></span><br> <span><strong>Description:</strong> <%= listing.description %></span>'
   });
 
+  google.maps.event.addListener(<%= "marker" + listing.id %>, 'click', function() {
+    <%= "infoWindow" + listing.id %>.open(map,<%= "marker" + listing.id %>);
+    setTimeout(function(){ <%= "infoWindow" + listing.id %>.close(map,<%= "marker" + listing.id %>); }, 2000);
+  });
+  <% end %>
 
-     function createHouse(lat, lng) {
-      $.ajax
-      ({
-        type: "POST",
-        datatype: "json",
-        url: "/listings",
-        data:  { listing: { latitude: lat, longitude: lng} }
-       });
-      }
+  });
 
 }
 
+// Loads Google Map on window load
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
@@ -55,7 +60,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   <thead>
     <th>Type</th>
+    <th>Address</th>
     <th>City</th>
+    <th>State</th>
+    <th>Zipcode</th>
     <th>Bedrooms: </th>
     <th>Bathrooms: </th>
     <th>Price:</th>
@@ -63,11 +71,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </thead>
 
   <tbody>
-  	<table class="table table-hover">
+    <table class="table table-hover">
     <% @listings.each do |f| %>
       <tr>
         <td><%= f.type %></td>
-        <td><%= f.city %> 
+        <td><%= f.address %></td>
+        <td><%= f.city.capitalize %> 
+        <td><%= f.state %></td>
+        <td><%= f.zip %></td>
         <td><%= f.num_bed %></td>
         <td><%= f.num_bath %></td>
         <td>$<%= f.price %></td>
@@ -80,3 +91,58 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </tbody>
 
 </table>
+<%else%>
+    <!-- Landing Page with three slides-->
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#bs-carousel" data-slide-to="1"></li>
+    <li data-target="#bs-carousel" data-slide-to="2"></li>
+  </ol>
+  
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+
+    <div class="item slides active">
+      <div class="slide-1">
+      <div class="hero">
+        <hgroup>
+            <h1>Find your next home</h1>        
+             <%= form_tag listings_path, :method => 'get' do %>
+             <%= text_field_tag :search, params[:search], :placeholder => "ENTER CITY", :style =>"color: black;" %><br>
+            <%= submit_tag "Take Me There", :class => "btn btn-hero btn-lg" %>
+            <% end %>
+        </hgroup>
+      </div>
+      </div>
+    </div>
+
+    <div class="item slides">
+      <div class="slide-2"></div>
+      <div class="hero">        
+        <hgroup>
+            <h1>Join the Community</h1>        
+        </hgroup>  
+        <%= button_to "Sign Up", new_user_path,
+      :class => "btn btn-hero btn-lg", :method => :get %>
+      </div>
+    </div>
+
+    <div class="item slides">
+      <div class="slide-3"></div>
+      <div class="hero">        
+        <hgroup>
+            <h1>Post your Space</h1>        
+        </hgroup>
+        <%= button_to "LOGIN", login_path,
+      :class => "btn btn-hero btn-lg", :method => :get %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <%end%>
+

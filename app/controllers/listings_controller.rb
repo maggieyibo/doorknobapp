@@ -19,6 +19,10 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.new(listing_params)
+
+    @listing.latitude = Geokit::Geocoders::GoogleGeocoder.geocode(@listing.full_address).latitude
+    @listing.longitude = Geokit::Geocoders::GoogleGeocoder.geocode(@listing.full_address).longitude
+    
     @listing[:city].downcase!
     if @listing.save
     	flash[:success] = "Listing created!"
@@ -54,7 +58,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:type, :city, :num_bed, :num_bath, :price, :description, :photo, :latitude, :longitude)
+    params.require(:listing).permit(:type, :address, :city, :state, :zipcode, :num_bed, :num_bath, :price, :description, :photo, :latitude, :longitude)
   end
 
 end

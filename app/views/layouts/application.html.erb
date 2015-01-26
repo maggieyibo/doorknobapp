@@ -13,13 +13,21 @@
         <%= link_to "DoorKnob", '/listings', id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Sign Up",   '/users/new' %></li>
+            <% if current_user %>
+            <li> Hello <%= current_user.username.upcase %>, You are logged in as <%= current_user.email %> </li>
+            <li><%= link_to "Log Out", logout_path %></li>
+            <% else %>
+            <li><%= link_to "Sign Up", '/users/new' %></li>
             <li><%= link_to "Login",   login_path %></li>
             <li><%= link_to "Log Out", logout_path %></li>
+            <% end %>
           </ul>
         </nav>
-      </div>
-    </header>
+      </div> 
+</header>
+
+
+
     <div class="container">
     	<% if current_user %>
         <% flash.each do |key, value| %>
@@ -27,24 +35,12 @@
           <% key %><%= value %>
           </div>
     <% end %>
-		<div> Hello <%= current_user.username %>, You are logged in as <%= current_user.email %> </div>
-    <h3>Where do you want to live? </h3>
-    <%= form_tag listings_path, :method => 'get' do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Take Me There" %>
-      </p>
-    <% end %>
-		<div class ="pager"><%= link_to 'See All Listings', listings_path, :class => "btn btn-default" %></div>
-    <div class="pager"><%= link_to 'Add A New Listing', new_listing_path, :class => "btn btn-default" %></div>
+		<div class ="pager"><%= link_to 'See All Listings', listings_path, :class => "btn btn-info" %>   <%= link_to 'Add A New Listing', new_listing_path, :class => "btn btn-info" %></div>
 		<% else %>
 		<%#= link_to 'login', login_path %>
 		<% end %>
 
     <%= yield %>
-
-		
-		<% session[:user_id] %>
 		
 
 </body>

@@ -1,7 +1,10 @@
 class Listing
   include Mongoid::Document
   field :type, type: String
+  field :address, type: String
   field :city, type: String
+  field :state, type: String
+  field :zip, type: Integer
   field :num_bed, type: Integer
   field :num_bath, type: Integer
   field :price, type: Integer
@@ -20,5 +23,7 @@ class Listing
   validates :price, presence: true
   validates :description, presence: true
 
- 
+  def full_address
+    return "#{address}, #{city}, #{state}, #{zip}"
+  end
 end
