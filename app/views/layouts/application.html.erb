@@ -8,12 +8,15 @@
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAtMTyEHjwug0bqEL-IEuEKgW3paGNZ0Jk" %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-<body>
+
+  <!-- navigation bar -->
+
+  <body>
     <header class="navbar navbar-inverse" role="navigation">
       <div class="navbar">
         <%= link_to "DoorKnob", '/listings', id: "logo" %>
       </div>
-        <nav>
+      <nav>
         <div class="links">
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
@@ -25,27 +28,28 @@
             <li><%= link_to "Log Out", logout_path %></li>
             <% end %>
           </ul>
-          </div>
-        </nav>
-      </div> 
-</header>
+        </div>
+      </nav>
+    </div> 
+  </header>
 
 
+  <!-- user sees add listing link if logged in -->
 
-    <div class="container">
-    	<% if current_user %>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>" role="alert">
-          <% key %><%= value %>
-          </div>
-    <% end %>
-		<div class ="pager"><%= link_to 'See All Listings', listings_path, :class => "btn btn-info" %>   <%= link_to 'Add A New Listing', new_listing_path, :class => "btn btn-info" %></div>
-		<% else %>
-		<%#= link_to 'login', login_path %>
-		<% end %>
+  <div class="container">
+   <% if current_user %>
+   <% flash.each do |key, value| %>
+   <div class="alert alert-<%= key %>" role="alert">
+    <% key %><%= value %>
+  </div>
+  <% end %>
+  <div class ="pager"><%= link_to 'See All Listings', listings_path, :class => "btn btn-info" %>   <%= link_to 'Add A New Listing', new_listing_path, :class => "btn btn-info" %></div>
+  <% else %>
+  <%#= link_to 'login', login_path %>
+  <% end %>
 
-    <%= yield %>
-		
+  <%= yield %>
+  
 
 </body>
 

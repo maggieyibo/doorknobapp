@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :users 
 
-
-  # root to: 'listings/index'
+  #root page
+  root to: 'listings#index'
 
 end
