@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 	end
 
 	def create
+		#user authentication required/added flash messages.
 		user = User.find_by(username: params[:user][:username])
 		if user && user.authenticate(params[:user][:password])
 
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
+		#redirects to login page after user logs off
 		session[:user_id]= nil
 		redirect_to login_path
 	end
